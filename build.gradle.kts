@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "id.logee.operation.convention"
+group = "io.dwikiriyadi.android.convention"
 
 // Configure the build-logic plugins to target JDK 17
 // This matches the JDK used to build the project, and is not related to what is running on device.
@@ -29,23 +29,23 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "logee.android.application"
+            id = "dwikiriyadi.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidDynamicFeature") {
-            id = "logee.android.dynamic.feature"
+            id = "dwikiriyadi.android.dynamic.feature"
             implementationClass = "AndroidDynamicFeatureConventionPlugin"
         }
         register("androidHilt") {
-            id = "logee.android.hilt"
+            id = "dwikiriyadi.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
         register("androidRoom") {
-            id = "logee.android.room"
+            id = "dwikiriyadi.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
         register("okhttpRetrofit") {
-            id = "logee.okhttp.retrofit"
+            id = "dwikiriyadi.okhttp.retrofit"
             implementationClass = "OkhttpRetrofitConventionPlugin"
         }
     }
