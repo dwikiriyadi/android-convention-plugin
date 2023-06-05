@@ -1,32 +1,28 @@
-import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.gradle.LibraryExtension
 import io.dwikiriyadi.android.configuration.ConventionVersion
+import io.dwikiriyadi.android.configuration.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
-class AndroidApplicationConventionPlugin : Plugin<Project> {
+class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
             with(pluginManager) {
-                apply("com.android.application")
+                apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
-                apply("org.jetbrains.kotlin.kapt")
             }
 
-            extensions.configure<ApplicationExtension> {
+            extensions.configure<LibraryExtension> {
                 compileSdk = ConventionVersion.compileSdk.toInt()
 
                 defaultConfig {
                     minSdk = ConventionVersion.minSdk.toInt()
-                    targetSdk = ConventionVersion.targetSdk.toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                    consumerProguardFiles("consumer-rules.pro")
                 }
-                buildFeatures.viewBinding = true
-            }
 
-            extensions.configure<KaptExtension> {
-                correctErrorTypes = true
+                configureAndroidCompose(this)
             }
         }
     }

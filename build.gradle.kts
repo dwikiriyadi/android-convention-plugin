@@ -19,34 +19,52 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.firebase.crashlytics.gradle)
-    compileOnly(libs.firebase.perf.gradle)
-    compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly("com.android.tools.build:gradle:8.0.0")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
+    compileOnly("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.8.20-1.0.11")
 }
 
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "dwikiriyadi.android.application"
+            id = "dwkryd.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidApplicationCompose") {
+            id = "dwkryd.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
         register("androidDynamicFeature") {
-            id = "dwikiriyadi.android.dynamic.feature"
+            id = "dwkryd.android.dynamic.feature"
             implementationClass = "AndroidDynamicFeatureConventionPlugin"
         }
+        register("androidDynamicFeatureCompose") {
+            id = "dwkryd.android.dynamic.feature.compose"
+            implementationClass = "AndroidDynamicFeatureComposeConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "dwkryd.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "dwkryd.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
         register("androidHilt") {
-            id = "dwikiriyadi.android.hilt"
+            id = "dwkryd.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
         register("androidRoom") {
-            id = "dwikiriyadi.android.room"
+            id = "dwkryd.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
         register("okhttpRetrofit") {
-            id = "dwikiriyadi.okhttp.retrofit"
+            id = "dwkryd.network.okhttp.retrofit"
             implementationClass = "OkhttpRetrofitConventionPlugin"
+        }
+        register("publish") {
+            id = "dwkryd.library.publish"
+            implementationClass = "PublishConventionPlugin"
         }
     }
 }

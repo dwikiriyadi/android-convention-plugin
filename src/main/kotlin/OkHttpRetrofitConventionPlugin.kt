@@ -1,19 +1,16 @@
+import io.dwikiriyadi.android.configuration.ConventionBundle
+import io.dwikiriyadi.android.configuration.ConventionDependency
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 
-class OkhttpRetrofitConventionPlugin : Plugin<Project> {
+class OkHttpRetrofitConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-
             dependencies {
-                val okhttpBom = libs.findLibrary("okhttp.bom").get()
-                add("implementation", platform(okhttpBom))
-                add("implementation", libs.findBundle("okhttpDependencies").get())
-                add("implementation", libs.findBundle("retrofitDependencies").get())
+                add("implementation", platform(ConventionDependency.okhttpBom))
+                add("implementation", ConventionBundle.okhttpDependencies)
+                add("implementation", ConventionBundle.retrofitDependencies)
             }
         }
     }

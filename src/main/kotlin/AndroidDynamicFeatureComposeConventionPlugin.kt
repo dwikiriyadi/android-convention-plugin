@@ -1,32 +1,31 @@
-import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.DynamicFeatureExtension
 import io.dwikiriyadi.android.configuration.ConventionVersion
+import io.dwikiriyadi.android.configuration.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
+import org.gradle.kotlin.dsl.dependencies
 
-class AndroidApplicationConventionPlugin : Plugin<Project> {
+class AndroidDynamicFeatureComposeConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
             with(pluginManager) {
-                apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
-                apply("org.jetbrains.kotlin.kapt")
+                apply("com.android.dynamic-feature")
             }
 
-            extensions.configure<ApplicationExtension> {
+            extensions.configure<DynamicFeatureExtension> {
                 compileSdk = ConventionVersion.compileSdk.toInt()
 
                 defaultConfig {
                     minSdk = ConventionVersion.minSdk.toInt()
-                    targetSdk = ConventionVersion.targetSdk.toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 }
-                buildFeatures.viewBinding = true
+                configureAndroidCompose(this)
             }
 
-            extensions.configure<KaptExtension> {
-                correctErrorTypes = true
+            dependencies {
+                add("implementation", project(":app"))
             }
         }
     }
