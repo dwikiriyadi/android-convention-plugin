@@ -1,8 +1,8 @@
-package io.dwikiriyadi.android.configuration
+package id.logee.configuration
 
 object ConventionVersion {
     const val compileSdk = "33"
-    const val minSdk = "21"
+    const val minSdk = "24"
     const val targetSdk = "33"
 
     const val androidxComposeCompiler = ""

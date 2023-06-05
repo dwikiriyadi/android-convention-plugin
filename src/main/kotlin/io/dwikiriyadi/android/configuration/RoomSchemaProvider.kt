@@ -1,4 +1,4 @@
-package io.dwikiriyadi.android.configuration
+package id.logee.configuration
 
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.PathSensitive

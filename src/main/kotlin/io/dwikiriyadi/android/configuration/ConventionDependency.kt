@@ -1,6 +1,4 @@
-package io.dwikiriyadi.android.configuration
-
-import io.dwikiriyadi.android.configuration.ConventionVersion
+package id.logee.configuration
 
 object ConventionDependency {
     // Android Compose

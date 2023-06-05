@@ -1,4 +1,4 @@
-import io.dwikiriyadi.android.configuration.ConventionDependency
+import id.logee.configuration.ConventionDependency
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

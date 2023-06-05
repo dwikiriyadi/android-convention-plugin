@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.DynamicFeatureExtension
-import io.dwikiriyadi.android.configuration.ConventionVersion
+import id.logee.configuration.ConventionVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

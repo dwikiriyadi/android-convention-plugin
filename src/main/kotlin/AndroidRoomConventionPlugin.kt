@@ -1,7 +1,7 @@
 import com.google.devtools.ksp.gradle.KspExtension
-import io.dwikiriyadi.android.configuration.ConventionBundle
-import io.dwikiriyadi.android.configuration.ConventionDependency
-import io.dwikiriyadi.android.configuration.RoomSchemaArgProvider
+import id.logee.configuration.ConventionBundle
+import id.logee.configuration.ConventionDependency
+import id.logee.configuration.RoomSchemaArgProvider
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -18,7 +18,9 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", ConventionBundle.roomDependencies)
+                ConventionBundle.roomDependencies.forEach {
+                    add("implementation", it)
+                }
                 add("ksp", ConventionDependency.androidxRoomCompiler)
             }
         }

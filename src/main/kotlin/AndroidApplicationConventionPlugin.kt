@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import io.dwikiriyadi.android.configuration.ConventionVersion
+import id.logee.configuration.ConventionVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -23,6 +23,12 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 }
                 buildFeatures.viewBinding = true
+
+                task("getVersionName") {
+                    doLast {
+                        println("ver${defaultConfig.versionName}")
+                    }
+                }
             }
 
             extensions.configure<KaptExtension> {

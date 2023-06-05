@@ -1,4 +1,4 @@
-package io.dwikiriyadi.android.configuration
+package id.logee.configuration
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
@@ -18,7 +18,9 @@ internal fun Project.configureAndroidCompose(
 
         dependencies {
             add("implementation", platform(ConventionDependency.androidxComposeBom))
-            add("implementation", ConventionBundle.composeDependencies)
+            ConventionBundle.composeDependencies.forEach {
+                add("implementation", it)
+            }
             add("androidTestImplementation", platform(ConventionDependency.androidxComposeBom))
         }
     }

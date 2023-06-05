@@ -1,4 +1,4 @@
-package io.dwikiriyadi.android.configuration
+package id.logee.configuration
 
 open class PublishConfiguration {
     var groupId: String = ""
